@@ -1,4 +1,4 @@
-# 🔭 Gaia DR3 Stellar Classification with JAX/Flax
+# 🔭 Gaia DR3 Stellar Classification with 1D-CNN
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![JAX](https://img.shields.io/badge/JAX-blue?style=for-the-badge)
@@ -24,43 +24,40 @@ This repository contains the advanced deep learning project I developed during m
 ## 🧬 Methodology & Pipeline
 
 ### 1. Exploratory Data Analysis (EDA) & Wrangling
-The process began with an in-depth analysis of the raw Gaia dataset to ensure data quality:
+The process began with a deep dive into the raw Gaia dataset to ensure data quality:
 * **Sky Distribution:** Analyzed source distribution using **Aitoff projection** in Galactic coordinates.
 * **Data Transformation:** Built custom parsers to convert JSON spectral strings into optimized NumPy arrays.
-* **Spectral Profiling:** Visualized **Flux** and **Flux Error** profiles to assess signal-to-noise ratios.
-* **Class Distribution:** Identified significant class imbalance, informing the use of cost-sensitive learning.
-
-![Sky Distribution](images/sky_distribution.png)
+* **Spectral Profiling:** Visualized **Flux** and **Flux Error** profiles to assess signal-to-noise ratios and uncertainties.
 
 ### 2. Smart Data Acquisition (Astroquery)
-Instead of relying on static files, the pipeline dynamically interacts with ESA servers:
-* **ADQL Queries:** Directly retrieves target labels (Teff) and source IDs using `astroquery.gaia`.
-* **Batch Processing:** Implements robust error handling and rate-limiting for optimized data streaming.
+Instead of static files, the pipeline uses **Astroquery** to interact with ESA servers:
+* **ADQL Queries:** Directly retrieves target labels (Teff) and source IDs from the Gaia Archive.
+* **Batch Processing:** Implements robust error handling and rate-limiting to download data in optimized chunks.
 
 ### 3. Neural Architecture (1D-CNN)
-Designed a high-performance **1D-CNN** to capture local spectral features (absorption lines):
+Designed a high-performance **1D-CNN** to capture local spectral features (absorption/emission lines):
 * **Layers:** 3 Convolutional stages (16, 32, 64 filters) with Batch Normalization and Dropout.
-* **Optimization:** Leverages **JIT compilation** for speed and **Optax (AdamW)** for stable updates.
+* **Optimization:** Leverages **JIT compilation** for speed and **Optax (AdamW)** for stable gradient updates.
 * **Handling Imbalance:** Custom class weights integrated into the Softmax Cross-Entropy loss.
 
 ---
 
 ## 📊 Results & Visualization
 
+### Spectral Signal Analysis
+Individual stellar spectra were analyzed to validate the input quality. Below is a sample visualization of a processed Gaia DR3 RVS flux signal and its associated error profile:
+
+![Spectral Flux](images/flux_graph.png)
+![Flux Error](images/flux_error_graph.png)
+
 ### Model Performance Analysis
-The model achieves an overall accuracy of **81%**. 
-
+The model achieves an overall accuracy of **81%**. A breakdown of the performance shows:
 * **High-Confidence Classes:** Exceptional results for **M-type (92% F1-score)**, **B-type (87%)**, and **K-type (87%)** stars.
-* **Data Scarcity Challenges:** Lower performance in **Class A (39%)** is due to extreme data imbalance (only 342 samples vs 10k+ in G/K types).
-
-![Classification Report](images/classification_report.png)
-
-### Training History & Convergence
-The stable decrease in loss and steady rise in accuracy demonstrate an effective learning rate and robust optimization.
-![Training History](images/training_history.png)
+* **Data Scarcity Challenges:** Lower performance in **Class A (39% F1-score)** is primarily due to significant data imbalance (only 342 samples vs 10k+ in G/K types).
+* **Robust Generalization:** Despite the imbalance, the weighted average of 81% confirms the model's reliability for the majority of the Gaia DR3 catalog.
 
 ### Latent Space Representation
-To validate feature extraction, I used **UMAP** to project the model's internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
+To validate the model's feature extraction, I used **UMAP** to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
 
 ![UMAP Visualization](images/umap_projection.png)
 
@@ -71,12 +68,10 @@ To validate feature extraction, I used **UMAP** to project the model's internal 
 ```text
 ├── Stellar_Classification_Final.ipynb
 ├── images/
-│   ├── sky_distribution.png
-│   ├── quality_metrics_pairplot.png
+│   ├── umap_projection.png
 │   ├── flux_graph.png
 │   ├── flux_error_graph.png
-│   ├── classification_report.png
-│   └── umap_projection.png
+│   └── quality_metrics_pairplot.png
 ├── models/
 │   ├── stellar_model_dict.joblib
 │   ├── scaler.joblib
