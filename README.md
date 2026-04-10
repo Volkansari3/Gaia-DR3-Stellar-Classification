@@ -47,7 +47,7 @@ The model successfully identifies stellar spectral classes with an overall accur
 ### UMAP latent Space Visualization
 To validate the model's feature extraction capability and understand the relationship between different spectral types in a 2D space, I implemented **UMAP (Uniform Manifold Approximation and Projection)** on the `X_test` latent features. The projection reveals distinct clustering, showing how different stellar spectral types group together based on their model-perceived signatures.
 
-
+![UMAP Visualization](images/umap_projection.png)
 ---
 
 ## 📁 Repository Structure
