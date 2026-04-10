@@ -1,0 +1,17 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+env/
+
+# Data files 
+*.csv
+*.gz
+*.json
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
