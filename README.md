@@ -44,12 +44,6 @@ Designed a high-performance **1D-CNN** to capture local spectral features (absor
 
 ## 📊 Results & Visualization
 
-### Spectral Signal Analysis
-Individual stellar spectra were analyzed to validate the input quality. Below is a sample visualization of a processed Gaia DR3 RVS flux signal and its associated error profile:
-
-![Spectral Flux](images/flux_graph.png)
-![Flux Error](images/flux_error_graph.png)
-
 ### Model Performance Analysis
 The model achieves an overall accuracy of **81%**. A breakdown of the performance shows:
 * **High-Confidence Classes:** Exceptional results for **M-type (92% F1-score)**, **B-type (87%)**, and **K-type (87%)** stars.
