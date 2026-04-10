@@ -3,7 +3,7 @@
 This repository contains the advanced deep learning project I developed during my **Erasmus+ Research Internship at Heidelberg University, Germany**. The project focuses on the automated classification of stellar spectral types using high-resolution, 1D spectroscopy data from the European Space Agency's (ESA) Gaia Mission.
 
 ## 📝 Project Overview
-The core objective of this research was to utilize advanced machine learning techniques in computational astrophysics. I built an uçtan uca (end-to-end) pipeline to retrieve, clean, and process **Gaia DR3 RVS (Radial Velocity Spectrometer)** mean spectra and train a high-performance neural network to predict a star's spectral class (A, B, F, G, K, M) based on its normalized flux values.
+The core objective of this research was to utilize advanced machine learning techniques in computational astrophysics. I built an end-to-end pipeline to retrieve, clean, and process **Gaia DR3 RVS (Radial Velocity Spectrometer)** mean spectra and train a high-performance neural network to predict a star's spectral class (A, B, F, G, K, M) based on its normalized flux values.
 
 ### 🛠 Technical Highlights & Engineering Decisions
 * **Institution:** Heidelberg University (Erasmus+ Research Project)
