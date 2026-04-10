@@ -57,6 +57,16 @@ To validate the model's feature extraction, I used **UMAP** to project the inter
 
 ---
 
+## ⚖️ License & Data Attribution
+
+### Data Source
+This work has made use of data from the European Space Agency (ESA) mission [Gaia](https://www.cosmos.esa.int/gaia), processed by the [Gaia Data Processing and Analysis Consortium (DPAC)](https://www.cosmos.esa.int/web/gaia/dpac/consortium).
+
+### License
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
 ## 📁 Repository Structure
 
 ```text
@@ -75,14 +85,3 @@ To validate the model's feature extraction, I used **UMAP** to project the inter
 ├── LICENSE
 ├── requirements.txt
 └── README.md
-
----
-
-
-## ⚖️ License & Data Attribution
-
-### Data Source
-This work has made use of data from the European Space Agency (ESA) mission [Gaia](https://www.cosmos.esa.int/gaia), processed by the [Gaia Data Processing and Analysis Consortium (DPAC)](https://www.cosmos.esa.int/web/gaia/dpac/consortium).
-
-### License
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
