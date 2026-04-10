@@ -50,7 +50,7 @@ The model achieves an overall accuracy of **81%**. A breakdown of the performanc
 * **Data Scarcity Challenges:** Lower performance in **Class A (39% F1-score)** is primarily due to significant data imbalance (only 342 samples vs 10k+ in G/K types).
 * **Robust Generalization:** Despite the imbalance, the weighted average of 81% confirms the model's reliability for the majority of the Gaia DR3 catalog.
 
-### Latent Space Representation
+### UMAP Visualization
 To validate the model's feature extraction, I used **UMAP** to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
 
 ![UMAP Visualization](images/umap_projection.png)
