@@ -1,0 +1,22 @@
+# Core Data Science & Analysis
+pandas
+numpy
+scikit-learn
+joblib
+
+# Deep Learning (JAX Stack)
+jax
+jaxlib
+flax
+optax
+
+# Astrophysics & Data Retrieval
+astroquery
+
+# Visualization
+umap-learn
+plotly
+matplotlib
+
+# Helper utilities
+ast
