@@ -25,19 +25,19 @@ This repository contains the computational astrophysics project I developed duri
 
 ### 1. Exploratory Data Analysis (EDA) & Wrangling
 The process began with a deep dive into the raw Gaia dataset to ensure data quality:
-* **Sky Distribution:** Analyzed source distribution using **Aitoff projection** in Galactic coordinates.
+* **Sky Distribution:** Analyzed source distribution using Aitoff projection in Galactic coordinates.
 * **Data Transformation:** Built custom parsers to convert JSON spectral strings into optimized NumPy arrays.
-* **Spectral Profiling:** Visualized **Flux** and **Flux Error** profiles to assess signal-to-noise ratios and uncertainties.
+* **Spectral Profiling:** Visualized Flux and Flux Error profiles to assess signal-to-noise ratios and uncertainties.
 
 ### 2. Smart Data Acquisition (Astroquery)
-Instead of static files, the pipeline uses **Astroquery** to interact with ESA servers:
+Instead of static files, the pipeline uses Astroquery to interact with ESA servers:
 * **ADQL Queries:** Directly retrieves target labels (Teff) and source IDs from the Gaia Archive.
 * **Batch Processing:** Implements robust error handling and rate-limiting to download data in optimized chunks.
 
 ### 3. Neural Architecture (1D-CNN)
-Designed a high-performance **1D-CNN** to capture local spectral features (absorption/emission lines):
+Designed a high-performance 1D-CNN to capture local spectral features (absorption/emission lines):
 * **Layers:** 3 Convolutional stages (16, 32, 64 filters) with Batch Normalization and Dropout.
-* **Optimization:** Leverages **JIT compilation** for speed and **Optax (AdamW)** for stable gradient updates.
+* **Optimization:** Leverages JIT compilation for speed and Optax (AdamW) for stable gradient updates.
 * **Handling Imbalance:** Custom class weights integrated into the Softmax Cross-Entropy loss.
 
 ---
@@ -51,7 +51,7 @@ The model achieves an overall accuracy of 81%. A breakdown of the performance sh
 * **Robust Generalization:** Despite the imbalance, the weighted average of 81% confirms the model's reliability for the majority of the Gaia DR3 catalog.
 
 ### UMAP Visualization
-To validate the model's feature extraction, I used **UMAP** to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
+To validate the model's feature extraction, I used UMAP to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
 
 ![UMAP Visualization](images/umap_projection.png)
 
