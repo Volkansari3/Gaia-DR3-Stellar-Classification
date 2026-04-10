@@ -17,7 +17,7 @@ This repository contains the advanced deep learning project I developed during m
 | **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
 | **Framework** | JAX / Flax (NNX) |
 | **Architecture** | 1D-Convolutional Neural Network (CNN) |
-| **Accuracy** | 80% (Global Test Set) |
+| **Accuracy** | 81% (Global Test Set) |
 
 ---
 
@@ -45,7 +45,7 @@ Designed a high-performance **1D-CNN** to capture local spectral features (absor
 ## 📊 Results & Visualization
 
 ### Model Performance Analysis
-The model achieves an overall accuracy of **80%**. The classification report reveals strong performance across major spectral classes:
+The model achieves an overall accuracy of **81%**. The classification report reveals strong performance across major spectral classes:
 
 * **High-Confidence Classes:** The model shows exceptional results for M-type (92% F1-score)**, B-type (87%), and K-type (87%) stars.
 * **Data Scarcity Challenges:** The lower performance in Class A (39% F1-score) is primarily due to significant data imbalance. With only 342 samples available in the test set (compared to 10,000+ for G and K types), the model had limited exposure to the specific features of A-type spectra.
