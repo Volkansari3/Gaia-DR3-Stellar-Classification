@@ -76,6 +76,8 @@ To validate the model's feature extraction, I used **UMAP** to project the inter
 ├── requirements.txt
 └── README.md
 
+---
+
 
 ## ⚖️ License & Data Attribution
 
