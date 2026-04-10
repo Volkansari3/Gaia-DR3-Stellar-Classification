@@ -1,61 +1,57 @@
-# 🔭 Gaia DR3 Stellar Classification with JAX/Flax 1D-CNN
+# 🔭 Gaia DR3 Stellar Classification with 1D-CNN
 
-This repository contains the advanced deep learning project I developed during my **Erasmus+ Research Internship at Heidelberg University, Germany**. The project focuses on the automated classification of stellar spectral types using high-resolution, 1D spectroscopy data from the European Space Agency's (ESA) Gaia Mission.
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![JAX](https://img.shields.io/badge/JAX-blue?style=for-the-badge)
+![Flax](https://img.shields.io/badge/Flax-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-## 📝 Project Overview
-The core objective of this research was to utilize advanced machine learning techniques in computational astrophysics. I built an end-to-end pipeline to retrieve, clean, and process **Gaia DR3 RVS (Radial Velocity Spectrometer)** mean spectra and train a high-performance neural network to predict a star's spectral class (A, B, F, G, K, M) based on its normalized flux values.
-
-### 🛠 Technical Highlights & Engineering Decisions
-* **Institution:** Heidelberg University (Erasmus+ Research Project)
-* **Data Source:** ESA Gaia DR3 RVS Mean Spectra.
-* **Architecture:** Custom-built **1D-CNN** implemented with **JAX/Flax (NNX)**.
-* **Optimization & Training:** Leveraging JAX's **JIT (Just-In-Time) compilation** and **grad** function for high-speed training. Optax was used for gradient optimization.
-* **Imbalanced Data Strategy:** Addressed class imbalance by implementing **class weights** in the loss function (Softmax Cross Entropy).
-* **Dimensionality Reduction:** Explored latent space representation using **UMAP** on the test dataset.
+This project was developed during my **Erasmus+ Research Internship at Heidelberg University, Germany**. It features an end-to-end pipeline for classifying stellar spectral types using JAX-powered Deep Learning.
 
 ---
 
-## 🧬 Methodology & Data Pipeline
+## 📌 Project Quick Specs
 
-### 1. Data Acquisition & Engineering (Astroquery Integration)
-The dataset construction involved professional-grade data handling and server-side interactions:
-* **Target Retrieval:** A key engineering decision was to dynamically retrieve target labels (spectral types) from the official Gaia Data Archive. I utilized the `astroquery.gaia` module to execute ADQL (Astronomical Data Query Language) queries, connecting directly to the ESA servers to fetch precise spectral class information for each source ID.
-* **Input Features:** Analysed `flux` and `flux_error` as raw inputs.
-* **Spectral Conversion:** Developed Python scripts to parse the initial JSON-like Gaia data format and convert it into structured NumPy arrays suitable for deep learning.
-
-### 2. Data Cleaning & Observational Quality Control
-The dataset was downsized from an initial ~208,130 raw samples to a refined, high-quality set of **136,025** samples. This rigorous cleaning process utilized multi-faceted observation quality metrics to ensure spectral integrity:
-* **Quality Filtering:** Samples were filtered based on critical Gaia observation metrics such as:
-    * **`rvs_nb_transits` (Combined Transits):** Ensuring a minimum number of spectral observations.
-    * **`rvs_expected_nb_transits` (Expected CCDs):** Comparing expected vs. observed detections.
-    * **Delended CCDs:** Filtering based on the quality of the de-blending process in crowded fields.
-
-### 3. Neural Architecture & Implementation (1D-CNN in JAX/Flax)
-I designed and trained a **1-Dimensional Convolutional Neural Network (1D-CNN)** to capture local spectral features (absorption and emission lines) from the 1D flux signal. The network was implemented using the modern **Flax (NNX)** framework on top of JAX:
-* **Architecture:** * 3 Convolutional layers with increasing filter counts (16, 32, 64) for multi-scale feature extraction.
-    * **Batch Normalization:** Applied after each conv layer to ensure training stability and faster convergence.
-    * **Regularization:** Dropout layers (0.2) to mitigate overfitting.
-* **Activation:** ReLU throughout hidden layers, Softmax for final output.
+| Category | Details |
+| :--- | :--- |
+| **Institution** | Heidelberg University |
+| **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
+| **Framework** | JAX / Flax (NNX) |
+| **Architecture** | 1D-Convolutional Neural Network (CNN) |
+| **Dataset Size** | 136,342 Samples (Refined from 208K) |
+| **Accuracy** | 81% (Global Test Set) |
 
 ---
 
-## 📊 Results, Analysis & Visualization
+## 🧬 Methodology & Pipeline
 
-### Classification Performance
-The model successfully identifies stellar spectral classes with an overall accuracy of **81%** (test set). The performance is particularly robust for B, G, K, and M types. For detailed performance metrics across A and F classes, please refer to the **Classification Report** inside the notebook.
+### 🔍 1. Data Engineering
+Used `astroquery.gaia` for dynamic target retrieval. The pipeline converts JSON-like raw Gaia data into optimized NumPy tensors.
+* **Cleaning:** Rigorous filtering based on `rvs_nb_transits` and CCD quality metrics.
+* **Preprocessing:** `MinMaxScaler` for flux normalization and `LabelEncoder` for spectral taxonomy.
 
-### UMAP latent Space Visualization
-To validate the model's feature extraction capability and understand the relationship between different spectral types in a 2D space, I implemented **UMAP (Uniform Manifold Approximation and Projection)** on the `X_test` latent features. The projection reveals distinct clustering, showing how different stellar spectral types group together based on their model-perceived signatures.
+### 🧠 2. Neural Architecture (JAX/Flax)
+Implemented a high-performance **1D-CNN** engine:
+* **Feature Extraction:** 3 Conv layers (16, 32, 64 filters) to detect spectral absorption lines.
+* **Performance:** Leverages JAX **JIT** compilation and **Optax** for high-speed training.
+* **Balance:** Class weights applied to handle imbalanced spectral distributions.
+
+---
+
+## 📊 Results & Insights
+
+### Latent Space Visualization
+We used **UMAP** to project the model's 1D-CNN features into a 2D space. The results show clear astronomical clustering:
 
 ![UMAP Visualization](images/umap_projection.png)
+
+> **Key Result:** The model achieves 81% accuracy, showing exceptional performance in identifying B, G, K, and M type stars.
+
 ---
 
 ## 📁 Repository Structure
 ```text
-├── notebooks/
-│   └── Stellar_Classification_JAX_Final.ipynb  # Comprehensive project notebook
-├── models/
-│   ├── stellar_model_dict.joblib              # Trained JAX/Flax model weights
-│   ├── scaler.joblib                          # Fitted MinMaxScaler
-│   └── label_encoder.joblib                   # Label taxonomy mapping
+├── notebooks/   # Core analysis & training
+├── models/      # Trained weights & encoders
+├── images/      # Visualizations & reports
+├── requirements.txt
 └── README.md
