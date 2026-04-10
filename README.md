@@ -65,7 +65,8 @@ To validate the model's feature extraction, I used **UMAP** to project the inter
 ├── images/
 │   ├── umap_projection.png
 │   ├── flux_graph.png
-│   └── flux_error_graph.png
+│   ├── flux_error_graph.png
+│   └── quality_metrics_pairplot.png
 ├── models/
 │   ├── stellar_model_dict.joblib
 │   ├── scaler.joblib
