@@ -9,42 +9,44 @@ This repository contains the advanced deep learning project I developed during m
 
 ---
 
-## 📌 Project Quick Specs
+## 📌 Project Overview
 
 | Category | Details |
 | :--- | :--- |
-| **Institution** | Heidelberg University |
+| **Institution** | Heidelberg University (Research Internship) |
 | **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
 | **Framework** | JAX / Flax (NNX) |
 | **Architecture** | 1D-Convolutional Neural Network (CNN) |
-| **Dataset Size** | 136,342 Samples (Refined from 208K) |
 | **Accuracy** | 81% (Global Test Set) |
 
 ---
 
 ## 🧬 Methodology & Pipeline
 
-### 🔍 1. Data Engineering
-Used `astroquery.gaia` for dynamic target retrieval. The pipeline converts JSON-like raw Gaia data into optimized NumPy tensors.
-* **Cleaning:** Rigorous filtering based on `rvs_nb_transits` and CCD quality metrics.
-* **Preprocessing:** `MinMaxScaler` for flux normalization and `LabelEncoder` for spectral taxonomy.
+### 1. Smart Data Acquisition (Astroquery)
+Instead of static files, the pipeline uses **Astroquery** to interact with ESA servers:
+* **ADQL Queries:** Directly retrieves target labels (Teff) and source IDs from the Gaia Archive.
+* **Batch Processing:** Implements robust error handling and rate-limiting to download data in optimized chunks.
 
-### 🧠 2. Neural Architecture (JAX/Flax)
-Implemented a high-performance **1D-CNN** engine:
-* **Feature Extraction:** 3 Conv layers (16, 32, 64 filters) to detect spectral absorption lines.
-* **Performance:** Leverages JAX **JIT** compilation and **Optax** for high-speed training.
-* **Balance:** Class weights applied to handle imbalanced spectral distributions.
+### 2. Neural Architecture (1D-CNN)
+Designed a high-performance **1D-CNN** to capture local spectral features (absorption/emission lines):
+* **Layers:** 3 Convolutional stages (16, 32, 64 filters) with Batch Normalization and Dropout.
+* **Optimization:** Leverages **JIT compilation** for speed and **Optax (AdamW)** for stable gradient updates.
+* **Handling Imbalance:** Custom class weights integrated into the Softmax Cross-Entropy loss.
 
 ---
 
-## 📊 Results & Insights
+## 📊 Results & Visualization
 
-### Latent Space Visualization
-We used **UMAP** to project the model's 1D-CNN features into a 2D space. The results show clear astronomical clustering:
+### Latent Space Representation
+To validate the model's feature extraction, I used **UMAP** to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
 
 ![UMAP Visualization](images/umap_projection.png)
 
-> **Key Result:** The model achieves 81% accuracy, showing exceptional performance in identifying B, G, K, and M type stars.
+### Spectral Analysis
+Sample visualizations of the Gaia DR3 RVS processed spectra:
+![Spectral Flux](images/flux_graph.png)
+![Flux Error](images/flux_error_graph.png)
 
 ---
 
