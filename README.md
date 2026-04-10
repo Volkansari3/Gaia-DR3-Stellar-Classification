@@ -46,9 +46,9 @@ Designed a high-performance **1D-CNN** to capture local spectral features (absor
 ### Model Performance Analysis
 The model achieves an overall accuracy of **80%**. The classification report reveals strong performance across major spectral classes:
 
-* **High-Confidence Classes:** The model shows exceptional results for **M-type (92% F1-score)**, **B-type (87%)**, and **K-type (87%)** stars.
-* **Data Scarcity Challenges:** The lower performance in **Class A (39% F1-score)** is primarily due to significant **data imbalance**. With only **342 samples** available in the test set (compared to 10,000+ for G and K types), the model had limited exposure to the specific features of A-type spectra.
-* **Robust Generalization:** Despite the imbalance, the **weighted average of 81%** confirms the model's reliability for the majority of the Gaia DR3 catalog.
+* **High-Confidence Classes:** The model shows exceptional results for M-type (92% F1-score)**, B-type (87%), and K-type (87%) stars.
+* **Data Scarcity Challenges:** The lower performance in Class A (39% F1-score) is primarily due to significant data imbalance. With only 342 samples available in the test set (compared to 10,000+ for G and K types), the model had limited exposure to the specific features of A-type spectra.
+* **Robust Generalization:** Despite the imbalance, the weighted average of 81% confirms the model's reliability for the majority of the Gaia DR3 catalog.
 
 ### Latent Space Representation
 To validate the model's feature extraction, I used **UMAP** to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
