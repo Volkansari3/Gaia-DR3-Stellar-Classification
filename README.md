@@ -25,9 +25,9 @@ This repository contains the advanced deep learning project I developed during m
 
 ### 1. Exploratory Data Analysis (EDA) & Wrangling
 The process began with a deep dive into the raw Gaia dataset to ensure data quality:
-* **Sky Distribution:** Generated a full-sky map using **Aitoff projection** to analyze the spatial distribution of stellar sources in Galactic coordinates.
-* **Data Transformation:** Developed custom parsers to convert JSON-formatted spectral strings into optimized NumPy arrays.
-* **Spectral Profiling:** Visualized individual **Flux** and **Flux Error** profiles to assess signal-to-noise ratios and observational uncertainties.
+* **Sky Distribution:** Analyzed source distribution using **Aitoff projection** in Galactic coordinates.
+* **Data Transformation:** Built custom parsers to convert JSON spectral strings into optimized NumPy arrays.
+* **Spectral Profiling:** Visualized **Flux** and **Flux Error** profiles to assess signal-to-noise ratios and uncertainties.
 
 ### 2. Smart Data Acquisition (Astroquery)
 Instead of static files, the pipeline uses **Astroquery** to interact with ESA servers:
