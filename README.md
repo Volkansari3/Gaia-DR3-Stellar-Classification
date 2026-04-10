@@ -17,18 +17,23 @@ This repository contains the advanced deep learning project I developed during m
 | **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
 | **Framework** | JAX / Flax (NNX) |
 | **Architecture** | 1D-Convolutional Neural Network (CNN) |
-| **Accuracy** | 81% (Global Test Set) |
+| **Accuracy** | 80% (Global Test Set) |
 
 ---
 
 ## 🧬 Methodology & Pipeline
 
-### 1. Smart Data Acquisition (Astroquery)
+### 🔍 1. Data Engineering
+Used `astroquery.gaia` for dynamic target retrieval. The pipeline converts JSON-like raw Gaia data into optimized NumPy tensors.
+* **Cleaning:** Rigorous filtering based on `rvs_nb_transits` and CCD quality metrics.
+* **Preprocessing:** `MinMaxScaler` for flux normalization and `LabelEncoder` for spectral taxonomy.
+
+### 2. Smart Data Acquisition (Astroquery)
 Instead of static files, the pipeline uses **Astroquery** to interact with ESA servers:
 * **ADQL Queries:** Directly retrieves target labels (Teff) and source IDs from the Gaia Archive.
 * **Batch Processing:** Implements robust error handling and rate-limiting to download data in optimized chunks.
 
-### 2. Neural Architecture (1D-CNN)
+### 3. Neural Architecture (1D-CNN)
 Designed a high-performance **1D-CNN** to capture local spectral features (absorption/emission lines):
 * **Layers:** 3 Convolutional stages (16, 32, 64 filters) with Batch Normalization and Dropout.
 * **Optimization:** Leverages **JIT compilation** for speed and **Optax (AdamW)** for stable gradient updates.
@@ -38,15 +43,17 @@ Designed a high-performance **1D-CNN** to capture local spectral features (absor
 
 ## 📊 Results & Visualization
 
+### Model Performance Analysis
+The model achieves an overall accuracy of **80%**. The classification report reveals strong performance across major spectral classes:
+
+* **High-Confidence Classes:** The model shows exceptional results for **M-type (92% F1-score)**, **B-type (87%)**, and **K-type (87%)** stars.
+* **Data Scarcity Challenges:** The lower performance in **Class A (39% F1-score)** is primarily due to significant **data imbalance**. With only **342 samples** available in the test set (compared to 10,000+ for G and K types), the model had limited exposure to the specific features of A-type spectra.
+* **Robust Generalization:** Despite the imbalance, the **weighted average of 81%** confirms the model's reliability for the majority of the Gaia DR3 catalog.
+
 ### Latent Space Representation
 To validate the model's feature extraction, I used **UMAP** to project the internal representations (logits) into a 2D space. The clustering clearly aligns with the astronomical spectral sequence.
 
 ![UMAP Visualization](images/umap_projection.png)
-
-### Spectral Analysis
-Sample visualizations of the Gaia DR3 RVS processed spectra:
-![Spectral Flux](images/flux_graph.png)
-![Flux Error](images/flux_error_graph.png)
 
 ---
 
