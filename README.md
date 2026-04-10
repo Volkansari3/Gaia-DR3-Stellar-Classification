@@ -30,7 +30,7 @@ The dataset was downsized from an initial ~208,130 raw samples to a refined, hig
     * **`rvs_expected_nb_transits` (Expected CCDs):** Comparing expected vs. observed detections.
     * **Delended CCDs:** Filtering based on the quality of the de-blending process in crowded fields.
 
-### 3. Deep Learning Model (1D-CNN in JAX/Flax)
+### 3. Neural Architecture & Implementation (1D-CNN in JAX/Flax)
 I designed and trained a **1-Dimensional Convolutional Neural Network (1D-CNN)** to capture local spectral features (absorption and emission lines) from the 1D flux signal. The network was implemented using the modern **Flax (NNX)** framework on top of JAX:
 * **Architecture:** * 3 Convolutional layers with increasing filter counts (16, 32, 64) for multi-scale feature extraction.
     * **Batch Normalization:** Applied after each conv layer to ensure training stability and faster convergence.
