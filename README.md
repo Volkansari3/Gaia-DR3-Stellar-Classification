@@ -17,7 +17,7 @@ This repository contains the computational astrophysics project I developed duri
 | **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
 | **Framework** | JAX / Flax (NNX) |
 | **Architecture** | 1D-Convolutional Neural Network (CNN) |
-| **Accuracy** | 81% (Global Test Set) |
+| **Accuracy** | 81% (Test Set) |
 
 ---
 
