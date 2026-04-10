@@ -45,9 +45,9 @@ Designed a high-performance **1D-CNN** to capture local spectral features (absor
 ## 📊 Results & Visualization
 
 ### Model Performance Analysis
-The model achieves an overall accuracy of **81%**. A breakdown of the performance shows:
-* **High-Confidence Classes:** Exceptional results for **M-type (92% F1-score)**, **B-type (87%)**, and **K-type (87%)** stars.
-* **Data Scarcity Challenges:** Lower performance in **Class A (39% F1-score)** is primarily due to significant data imbalance (only 342 samples vs 10k+ in G/K types).
+The model achieves an overall accuracy of 81%. A breakdown of the performance shows:
+* **High-Confidence Classes:** Exceptional results for M-type (92% F1-score), B-type (87%), and K-type (87%) stars.
+* **Data Scarcity Challenges:** Lower performance in Class A (39% F1-score) is primarily due to significant data imbalance (only 342 samples vs 10k+ in G/K types).
 * **Robust Generalization:** Despite the imbalance, the weighted average of 81% confirms the model's reliability for the majority of the Gaia DR3 catalog.
 
 ### UMAP Visualization
