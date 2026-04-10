@@ -5,7 +5,7 @@
 ![Flax](https://img.shields.io/badge/Flax-orange?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-This project was developed during my **Erasmus+ Research Internship at Heidelberg University, Germany**. It features an end-to-end pipeline for classifying stellar spectral types using JAX-powered Deep Learning.
+This repository contains the advanced deep learning project I developed during my **Erasmus+ Research Internship at Heidelberg University, Germany**. The project focuses on the automated classification of stellar spectral types using high-resolution, 1D spectroscopy data from the European Space Agency's (ESA) Gaia Mission.
 
 ---
 
@@ -49,9 +49,19 @@ We used **UMAP** to project the model's 1D-CNN features into a 2D space. The res
 ---
 
 ## 📁 Repository Structure
+
 ```text
-├── notebooks/   # Core analysis & training
-├── models/      # Trained weights & encoders
-├── images/      # Visualizations & reports
+├── Stellar_Classification_Final.ipynb
+├── images/
+│   ├── umap_projection.png
+│   ├── flux_graph.png
+│   └── flux_error_graph.png
+├── models/
+│   ├── stellar_model_dict.joblib
+│   ├── scaler.joblib
+│   └── label_encoder.joblib
+├── .gitattributes
+├── .gitignore
+├── LICENSE
 ├── requirements.txt
 └── README.md
