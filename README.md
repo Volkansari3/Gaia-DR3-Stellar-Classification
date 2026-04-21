@@ -63,7 +63,7 @@ Designed a high-performance 1D-CNN to capture local spectral features (absorptio
 
 ### Model Performance Analysis
 
-The model achieves an overall accuracy of 81%. A breakdown of the performance shows:
+The model achieves an overall accuracy of 80.4%. A breakdown of the performance shows:
 
 * **High-Confidence Classes:** Exceptional results for M-type (92% F1-score), B-type (87%), and K-type (87%) stars.
 * **Data Scarcity Challenges:** Lower performance in Class A (39% F1-score) is primarily due to significant data imbalance (only 342 samples vs 10k+ in G/K types).
