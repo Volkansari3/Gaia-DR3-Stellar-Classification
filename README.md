@@ -28,7 +28,7 @@ The demo allows you to select real Gaia DR3 source IDs, run the CNN classifier, 
 | **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
 | **Framework** | JAX / Flax (NNX) |
 | **Architecture** | 1D-Convolutional Neural Network (CNN) |
-| **Accuracy** | 80% (Test Set) |
+| **Accuracy** | 80.4% (Test Set) |
 
 ---
 
