@@ -95,10 +95,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ├── Stellar_Classification_Final.ipynb
 ├── app.py
 ├── images/
-│   ├── umap_projection.png
-│   ├── flux_graph.png
-│   ├── flux_error_graph.png
-│   └── quality_metrics_pairplot.png
 ├── models/
 │   ├── stellar_model_dict.joblib
 │   ├── scaler.joblib
