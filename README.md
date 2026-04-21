@@ -12,11 +12,11 @@ This repository contains the computational astrophysics project I developed duri
 
 ## 🚀 Live Demo
 
-For a fully interactive experience — including live stellar classification, RVS spectrum visualisation, UMAP embeddings, and per-class performance analysis — the project is deployed as a public web application:
+If you'd like to interactively examine the project's technical details, RVS spectra, RVS flux error graphs, and class-based performance analyses, you can check out our public web application:
 
 **👉 [https://gaia-dr3-stellar-classification-deployment.streamlit.app/](https://gaia-dr3-stellar-classification-deployment.streamlit.app/)**
 
-The demo allows you to select real Gaia DR3 source IDs, run the CNN classifier, and explore the model's results across all six Harvard spectral classes.
+The demo allows you to select real Gaia DR3 source IDs, run the CNN classifier, and explore the model's datasets, architectures, and results across all six Harvard spectral classes.
 
 ---
 
