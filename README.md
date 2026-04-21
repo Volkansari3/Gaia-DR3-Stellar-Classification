@@ -28,7 +28,7 @@ The demo allows you to select real Gaia DR3 source IDs, run the CNN classifier, 
 | **Data Source** | ESA Gaia DR3 RVS Mean Spectra |
 | **Framework** | JAX / Flax (NNX) |
 | **Architecture** | 1D-Convolutional Neural Network (CNN) |
-| **Accuracy** | 81% (Test Set) |
+| **Accuracy** | 80% (Test Set) |
 
 ---
 
@@ -67,7 +67,7 @@ The model achieves an overall accuracy of 81%. A breakdown of the performance sh
 
 * **High-Confidence Classes:** Exceptional results for M-type (92% F1-score), B-type (87%), and K-type (87%) stars.
 * **Data Scarcity Challenges:** Lower performance in Class A (39% F1-score) is primarily due to significant data imbalance (only 342 samples vs 10k+ in G/K types).
-* **Robust Generalization:** Despite the imbalance, the weighted average of 81% confirms the model's reliability for the majority of the Gaia DR3 catalog.
+* **Robust Generalization:** Despite the imbalance, the weighted average of 80% confirms the model's reliability for the majority of the Gaia DR3 catalog.
 
 ### UMAP Visualization
 
